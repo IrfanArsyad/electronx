@@ -1,0 +1,84 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.app {
+  min-height: 100vh;
+  padding: $spacing-lg;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 2rem;
+    color: $color-primary;
+  }
+
+  p {
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+  }
+}
+
+.main {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.socket-section {
+  h2 {
+    margin-bottom: 15px;
+    color: $color-primary;
+  }
+}
+
+.connection-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+
+  .input-wrapper {
+    flex: 1;
+  }
+}
+
+.status {
+  padding: 10px;
+  border-radius: $radius-md;
+  background: $color-surface;
+  margin-bottom: 15px;
+  color: $color-danger;
+
+  &.connected {
+    color: $color-success;
+  }
+}
+
+.messages {
+  height: 300px;
+  overflow-y: auto;
+  background: $color-surface;
+  border-radius: $radius-md;
+  padding: 15px;
+  margin-bottom: 15px;
+  @include scrollbar;
+}
+
+.message {
+  padding: 5px 0;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.send-form {
+  display: flex;
+  gap: 10px;
+
+  .input-wrapper {
+    flex: 1;
+  }
+}

@@ -1,0 +1,91 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.btn {
+  @include flex-center;
+  gap: $spacing-sm;
+  border: none;
+  border-radius: $radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  @include transition;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  // Variants
+  &--primary {
+    background: $color-primary;
+    color: $color-bg;
+    &:hover:not(:disabled) {
+      background: $color-primary-hover;
+    }
+  }
+
+  &--secondary {
+    background: $color-secondary;
+    color: #fff;
+    &:hover:not(:disabled) {
+      background: $color-secondary-hover;
+    }
+  }
+
+  &--danger {
+    background: $color-danger;
+    color: #fff;
+    &:hover:not(:disabled) {
+      background: $color-danger-hover;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    &:hover:not(:disabled) {
+      background: rgba($color-primary, 0.1);
+    }
+  }
+
+  // Sizes
+  &--sm {
+    padding: 6px 12px;
+    font-size: $font-size-xs;
+  }
+
+  &--md {
+    padding: 10px 20px;
+    font-size: $font-size-md;
+  }
+
+  &--lg {
+    padding: 14px 28px;
+    font-size: $font-size-lg;
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  // Loading
+  &__loader {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: btn-spin 0.8s linear infinite;
+  }
+
+  &__content--hidden {
+    visibility: hidden;
+  }
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}

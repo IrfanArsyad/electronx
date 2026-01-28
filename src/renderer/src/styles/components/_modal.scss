@@ -1,0 +1,73 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  @include flex-center;
+  padding: $spacing-lg;
+  z-index: 1000;
+}
+
+.modal {
+  width: 100%;
+  background: $color-bg;
+  border-radius: $radius-xl;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+
+  &__header {
+    @include flex(space-between, center);
+    padding: $spacing-md $spacing-lg;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  &__close {
+    @include button-reset;
+    padding: 6px;
+    color: $color-text-muted;
+    border-radius: $radius-sm;
+    @include transition;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: $color-text;
+    }
+  }
+
+  &__body {
+    padding: $spacing-lg;
+  }
+
+  &__footer {
+    @include flex(flex-end, center);
+    gap: 10px;
+    padding: $spacing-md $spacing-lg;
+    border-top: 1px solid $color-border;
+  }
+}
+
+// Transitions
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity $transition-normal;
+  .modal {
+    transition: transform $transition-normal;
+  }
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+  .modal {
+    transform: scale(0.95);
+  }
+}

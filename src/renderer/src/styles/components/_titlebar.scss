@@ -1,0 +1,47 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.title-bar {
+  @include flex(space-between, center);
+  height: 32px;
+  background: $color-surface;
+  user-select: none;
+
+  &__drag {
+    flex: 1;
+    height: 100%;
+    @include flex(flex-start, center);
+    padding-left: $spacing-sm + 4px;
+    -webkit-app-region: drag;
+  }
+
+  &__title {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+  }
+
+  &__controls {
+    display: flex;
+    height: 100%;
+    -webkit-app-region: no-drag;
+  }
+
+  &__btn {
+    @include button-reset;
+    @include flex-center;
+    width: 46px;
+    height: 100%;
+    color: $color-text-muted;
+    @include transition(background, color);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: $color-text;
+    }
+
+    &--close:hover {
+      background: #e81123;
+      color: #fff;
+    }
+  }
+}
