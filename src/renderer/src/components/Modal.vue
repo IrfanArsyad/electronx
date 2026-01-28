@@ -35,7 +35,6 @@ function handleOverlayClick() {
   }
 }
 
-// Lock body scroll when modal is open
 watch(() => props.modelValue, (isOpen) => {
   document.body.style.overflow = isOpen ? 'hidden' : ''
 })
@@ -65,87 +64,3 @@ watch(() => props.modelValue, (isOpen) => {
     </Transition>
   </Teleport>
 </template>
-
-<style scoped>
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  z-index: 1000;
-}
-
-.modal {
-  width: 100%;
-  background: #1a1a2e;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-}
-
-.modal__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  border-bottom: 1px solid #333;
-}
-
-.modal__title {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-}
-
-.modal__close {
-  padding: 6px;
-  border: none;
-  background: transparent;
-  color: #666;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.2s;
-}
-
-.modal__close:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-
-.modal__body {
-  padding: 20px;
-}
-
-.modal__footer {
-  padding: 16px 20px;
-  border-top: 1px solid #333;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-/* Transitions */
-.modal-enter-active,
-.modal-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.modal-enter-active .modal,
-.modal-leave-active .modal {
-  transition: transform 0.2s ease;
-}
-
-.modal-enter-from,
-.modal-leave-to {
-  opacity: 0;
-}
-
-.modal-enter-from .modal,
-.modal-leave-to .modal {
-  transform: scale(0.95);
-}
-</style>

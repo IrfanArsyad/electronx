@@ -2,7 +2,7 @@
 /**
  * TitleBar - Custom window title bar with controls
  */
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useElectron } from '@/composables/useElectron'
 
 interface Props {
@@ -57,7 +57,7 @@ async function handleClose() {
         </svg>
         <svg v-else width="12" height="12" viewBox="0 0 12 12">
           <rect x="3" y="0" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" />
-          <rect x="0" y="3" width="9" height="9" fill="var(--bg-color, #1a1a2e)" stroke="currentColor" stroke-width="1.5" />
+          <rect x="0" y="3" width="9" height="9" fill="var(--color-surface)" stroke="currentColor" stroke-width="1.5" />
         </svg>
       </button>
       <button class="title-bar__btn title-bar__btn--close" @click="handleClose" title="Close">
@@ -68,57 +68,3 @@ async function handleClose() {
     </div>
   </div>
 </template>
-
-<style scoped>
-.title-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 32px;
-  background: #16213e;
-  user-select: none;
-}
-
-.title-bar__drag {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding-left: 12px;
-  -webkit-app-region: drag;
-}
-
-.title-bar__title {
-  font-size: 13px;
-  color: #888;
-}
-
-.title-bar__controls {
-  display: flex;
-  height: 100%;
-  -webkit-app-region: no-drag;
-}
-
-.title-bar__btn {
-  width: 46px;
-  height: 100%;
-  border: none;
-  background: transparent;
-  color: #888;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s, color 0.15s;
-}
-
-.title-bar__btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-
-.title-bar__btn--close:hover {
-  background: #e81123;
-  color: #fff;
-}
-</style>
